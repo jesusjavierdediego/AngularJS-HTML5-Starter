@@ -20,7 +20,7 @@
 
 
 
-        <div ng-controller="CollapseDemoCtrl" ng-show="loginStatus == 'connected' || loginStatus == 'Security not enabled'">
+        <div ng-show="loginStatus == 'connected' || loginStatus == 'Security not enabled'">
             <p class="lead">
                 <h3>This is the Appverse Web HTML5/JavaScript Demo</h3>
             </p>
@@ -32,7 +32,7 @@
                 <a href="" ng-click="routingCollapsed = !routingCollapsed">
                     <p class="lead">Routing</p>
                 </a>
-                <div collapse="routingCollapsed">
+                <div collapse="routingCollapse">
                     <p>Routing features are not only based on default AngularJS routing mechanism.</p>
                     <p>Unlike the built-in ngRoute service, UI-Router can nest views as it works based on states, not URLs.</p>
                     <p>Use the menu bar to navigate.
