@@ -33,6 +33,11 @@ angular.module('App.Controllers')
 .controller('PerformManualEntryCtrl', ["$log", "$scope",  
     function ($log, $scope) {
         $log.debug("Loaded PerformManualEntryCtrl");
+        
+        $('.selectpicker').selectpicker({
+            style: 'btn-info',
+            size: 4
+        });
 }])
 
 .controller('DatepickerDemoCtrl', ["$scope", "$log",
