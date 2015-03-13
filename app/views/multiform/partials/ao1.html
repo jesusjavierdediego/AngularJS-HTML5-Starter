@@ -1,0 +1,112 @@
+<div class="container" ng-cntroller="PerformManualEntryCtrl">
+    <p class="lead">{{menuItem}}</p>
+    
+    
+  <div>
+    Debit Account:  
+    <div class="btn-group" dropdown>
+      <button type="button" class="btn  dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Debit Account dropdown <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" rest rest-path="debitAccount.json" rest-name="ledgers">
+        <li ng-repeat="ledger in ledgers">{{ledger.name}}</li>
+      </ul>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    Debit Agent:
+    <div class="btn-group" dropdown>
+      <button type="button" class="btn  dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Debit Agent: dropdown <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li>Another action</li>
+        <li>Something else here</li>
+      </ul>
+    </div>
+    
+    <br><br><br>
+    
+     Credit Account:  
+    <div class="btn-group" dropdown>
+      <button type="button" class="btn  dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Credit Account dropdown <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+    
+    Credit Agent:
+    <div class="btn-group" dropdown>
+      <button type="button" class="btn  dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Credit Agent dropdown <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+    
+    <br><br><br>
+    
+     Trans Type:  
+    <div class="btn-group" dropdown>
+      <button type="button" class="btn  dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Trans Type dropdown <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+    
+    Amount:
+    <div class="btn-group" dropdown>
+      <button type="button" class="btn  dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Amount dropdown <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+    
+    <hr /><hr />
+    
+    <p>
+        <button type="button" class="btn btn-warning btn-sm" ng-click="disabled = !disabled">Enable/Disable Button Dropdown</button>
+    </p>
+    
+    <div ng-controller="DatepickerDemoCtrl">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="input-group">
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>

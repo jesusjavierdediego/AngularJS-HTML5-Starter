@@ -468,8 +468,8 @@ module.exports = function (grunt) {
             docular_webapp_target: "doc",
             groups: [
                 {
-                    groupTitle: 'Appverse HTML5',
-                    groupId: 'appverse',
+                    groupTitle: 'AngularJSHTML5',
+                    groupId: 'angularjs',
                     groupIcon: 'icon-beer',
                     sections: [
                         {

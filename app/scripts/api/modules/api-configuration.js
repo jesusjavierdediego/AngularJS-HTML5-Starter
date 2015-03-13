@@ -513,7 +513,7 @@ Future updates of Restangular imply review of this section in order to keep cons
 })
 
 .constant('SECURITY_OAUTH', {
-    oauth2_endpoint: 'appverse',
+    oauth2_endpoint: 'unknown',
     clientID: '',
     profile: 'http://localhost:8080/html5-incubator-server',
     scope: 'resources',

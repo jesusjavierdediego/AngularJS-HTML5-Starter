@@ -8,7 +8,7 @@
 <!--<![endif]-->
 
 <head>
-    <title data-ng-bind="$state.current.name">Appverse Web HTML5 Incubator</title>
+    <title data-ng-bind="$state.current.name">AngularJS HTML5 Demo</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -18,7 +18,7 @@
     <!-- build:css styles/vendor.css -->
     <link rel="stylesheet" href="styles/jquery.mobile-1.3.2.min.css">
     <link rel="stylesheet" href="styles/angular-jqm.css">
-    <link rel="stylesheet" href="styles/cpustyle.css">
+<!--    <link rel="stylesheet" href="styles/cpustyle.css">-->
     <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
     <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.min.css">
     <!-- endbuild -->
@@ -42,113 +42,8 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- HEADER/NAVIGATION BAR
-     This is the unnamed root, aka index.html
-     You can place here your views in the ui-view points.
-    -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
 
-            <!-- ui-sref is a directive from ui-router for linking a state location with an anchor link.
-                 We should almost always use ui-sref instead of href on our links when we want
-                 then to navigate to a state. When this link is clicked it will take the application
-                 to the 'home' state. Behind the scenes the directive also adds the correct href attr
-                 and url. -->
-            <div class="navbar-header">
 
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <a class="navbar-brand" ui-sref="home">
-                    <span>Appverse<br>HTML5</span>
-                    <img src="styles/images/html5-badge-h-solo.png" alt="HTML5 Powered" title="HTML5 Powered">
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-
-                    <!-- Here you can see ui-sref in action again. Also notice the use of $state.includes, which
-                 will set the links to 'active' if, for example on the first link, 'contacts' or any of
-                 its descendant states are activated. -->
-                    <li data-ng-class="{ active: $state.includes('topics') }">
-                        <a ui-sref="topics.list">REST</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('ui') }">
-                        <a ui-sref="ui">Gadgets</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('cache') }">
-                        <a ui-sref="cache.state1">Cache</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('detection') }">
-                        <a ui-sref="detection">Detection</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('mobile') }">
-                        <a ui-sref="mobile">Mobile</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('websockets') }">
-                        <a ui-sref="websockets">Websockets</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('translation') }">
-                        <a ui-sref="translation">Translation</a>
-                    </li>
-                    <li ng-class="{ active: $state.includes('performance') }">
-                        <a ui-sref="performance.webworkers">Performance</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('multiform') }">
-                        <a ui-sref="multiform.list">Multiform</a>
-                    </li>
-                    <li data-ng-class="{ active: $state.includes('about') }">
-                        <a ui-sref="about">About</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Here is a named ui-view (ui-view="hint"). ui-views don't have to be named, but we'll be populate this
-                 on from various different child states and we want a name to help us target. -->
-            <!--            <p ui-view="hint" class="navbar-text pull-left" autoscroll="false"></p>-->
-        </div>
-    </nav>
-
-    <div>
-        <script type="text/ng-template" id="modalLoginForm.html">
-            <div class="modal-header">
-                <h3> Enter your user name and password
-                    </h3>
-            </div>
-            <form name="loginForm" novalidate ng - submit="submit()">
-                <div class="modal-body">
-                    <span ng - show="loginForm.name.$error.required || loginForm.password.$error.required" />
-                </div>
-                <div class="modal-body" ng-class="{'has-error': loginForm.credentials.$invalid}">
-                    <label>User name</label>
-                    <input id="name" type="text" placeholder="Username" required ng - model="credentials.name" autofocus />
-                    <label> Password
-                    </label>
-                    <input id="password" type="password" placeholder="Password" ng-model="credentials.password" />
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-                    <input type="submit" class="btn primary-btn" value="Submit" ng - disabled="!loginForm.$valid" />
-                </div>
-            </form>
-            <font color="red"> { { errorMessage } }
-                </font>
-        </script>
-    </div>
-
-    <!-- MAIN INSERTION POINT
-         Here is the main ui-view (it is unnamed) as the main content insertion point.
-         It replaces the default Angular's ng-view directive.
-         It will be populate by its immediate children's templates/views unless otherwise
-         explicitly named views are targeted.
-         It's also employing the ng-animate directive.
-         For example: <div ui-view ng-animate="{enter:'fade-enter'}">
-     -->
     <div ui-view class="myslide" autoscroll="false"></div>
 
     <!-- build:js scripts/scripts.js -->
@@ -156,9 +51,6 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="bower_components/modernizr/modernizr.js"></script>
-    <script src="bower_components/jquery-flot/jquery.flot.js"></script>
-    <script src="bower_components/jquery-flot/jquery.flot.resize.js"></script>
-    <script src="bower_components/jquery-flot/jquery.flot.time.js"></script>
 
     <!-- uibootstrap -->
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
@@ -199,10 +91,10 @@
     <script src="scripts/api/modules/api-serverpush.js"></script>
 
     <!-- Translate module -->
-    <script src="scripts/api/modules/api-translate.js"></script>
+<!--    <script src="scripts/api/modules/api-translate.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
-    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>-->
 
     <script src="scripts/api/modules/api-utils.js"></script>
 
@@ -213,14 +105,6 @@
 
     <!-- app -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/security-controllers.js"></script>
-    <script src="scripts/controllers/topics-controllers.js"></script>
-    <script src="scripts/controllers/cache-controllers.js"></script>
-    <script src="scripts/controllers/detection-controllers.js"></script>
-    <script src="scripts/controllers/servermessages-controllers.js"></script>
-    <script src="scripts/controllers/translation-controllers.js"></script>
-    <script src="scripts/controllers/mobile-controllers.js"></script>
-    <script src="scripts/controllers/performance-controllers.js"></script>
     <script src="scripts/controllers/multiform-controllers.js"></script>
     <script src="scripts/factories/app-factory.js"></script>
     <script src="scripts/states/app-states.js"></script>

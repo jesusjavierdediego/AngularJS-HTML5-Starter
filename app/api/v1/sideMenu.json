@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "title": "Accounting",
+        "content": "Accounting content",
+        "items": [
+            {
+                "id": "a",
+                "title": "Perform Manual Entry",
+                "value": "ao1"
+        },
+            {
+                "id": "b",
+                "title": "Accounting Operation 2",
+                "value": "ao2"
+        }
+      ]
+    },
+    {
+        "id": 2,
+        "title": "Sells",
+         "content": "Sells content",
+         "items": [
+            {
+                "id": "a",
+                "title": "Sells Operation 1",
+                "value": "so1"
+        }
+      ]
+    },
+    {
+        "id": 3,
+        "title": "Portfolio",
+        "content": "Portfolio content",
+        "items": [
+            {
+                "id": "a",
+                "title": "Portfolio Operation 1",
+                "value": "po1"
+        },
+            {
+                "id": "b",
+                "title": "Portfolio Operation 2",
+                "value": "po2"
+        },
+            {
+                "id": "b",
+                "title": "Portfolio Operation 3",
+                "value": "po3"
+        }
+      ]
+    }
+  ]

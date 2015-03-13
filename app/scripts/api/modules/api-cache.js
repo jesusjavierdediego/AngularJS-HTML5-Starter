@@ -312,7 +312,7 @@ angular.module('AppCache', ['ng', 'AppConfiguration', 'jmdobry.angular-cache', '
                         return deferred.promise;
                     }
 
-                    var openRequest = window.indexedDB.open("indexeddb_appverse", 1);
+                    var openRequest = window.indexedDB.open("indexeddb_angularjshtml5", 1);
 
                     openRequest.onerror = function(e) {
                         $log.debug("Error opening db");

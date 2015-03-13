@@ -1,27 +1,16 @@
 [
     {
         "id": 1,
-        "name": "Security"
+        "name": "Ledger Type 1"
     },
     {
         "id": 2,
-        "name": "Styling"
+        "name": "Ledger Type 2"
     },
     {
         "id": 3,
-        "name": "Configuration",
-        "items": [
-            {
-                "id": "a",
-                "type": "Priority",
-                "value": "medium"
-        },
-            {
-                "id": "b",
-                "type": "Assigned PSU Task",
-                "value": "TMENU-20"
-        }
-      ]
+        "name": "Ledger Type 3"
+
     },
     {
         "id": 4,
