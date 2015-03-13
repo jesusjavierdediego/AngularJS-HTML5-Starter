@@ -99,6 +99,9 @@
                     <li ng-class="{ active: $state.includes('performance') }">
                         <a ui-sref="performance.webworkers">Performance</a>
                     </li>
+                    <li data-ng-class="{ active: $state.includes('multiform') }">
+                        <a ui-sref="multiform.list">Multiform</a>
+                    </li>
                     <li data-ng-class="{ active: $state.includes('about') }">
                         <a ui-sref="about">About</a>
                     </li>
@@ -218,6 +221,7 @@
     <script src="scripts/controllers/translation-controllers.js"></script>
     <script src="scripts/controllers/mobile-controllers.js"></script>
     <script src="scripts/controllers/performance-controllers.js"></script>
+    <script src="scripts/controllers/multiform-controllers.js"></script>
     <script src="scripts/factories/app-factory.js"></script>
     <script src="scripts/states/app-states.js"></script>
 

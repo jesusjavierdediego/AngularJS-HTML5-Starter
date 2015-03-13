@@ -358,5 +358,63 @@ angular.module('App')
                                     '</ul></div>';
                             }, 100);
                         }]
+                })
+                
+                
+                ///////////////////
+                // State: Topics //
+                ///////////////////
+
+                .state('multiform', {
+                    abstract: true,
+                    url: '/multiform',
+                    templateUrl: 'views/multiform/multiform.html',
+                    controller: 'MultiformController'
+                })
+
+                .state('multiform.list', {
+                    url: '',
+                    templateUrl: 'views/multiform/multiform.list.html'
+                })
+
+                .state('multiform.detail', {
+                    url: '/{multiformId:[0-9]{1,4}}',
+                    views: {
+                        '': {
+                            templateUrl: 'views/multiform/multiform.detail.html'
+                        },
+                        'hint@': {
+                            template: 'Hint: Use the ui-view directives to place content anywhere.'
+                        },
+                        'menuTip': {
+                            templateProvider: ['$stateParams',
+                                function ($stateParams) {
+                                    return '<hr><small class="muted">Multiform ID: ' + $stateParams.multiformId + '</small>';
+                                }]
+                        }
+                    }
+                })
+
+                .state('multiform.detail.item', {
+                    url: '/item/:itemId',
+                    views: {
+                        '': {
+                            templateUrl: 'views/multiform/multiform.detail.item.html',
+                            controller: 'MultiformDetailsItemController'
+                        },
+                        'hint@': {
+                            template: ' Hint: Use overriding of the ui-view for contextual information.'
+                        }
+                    }
+                })
+                
+                .state('multiform.detail.item.edit', {
+                    views: {
+                        '@multiform.detail': {
+                            templateUrl: 'views/multiform/multiform.detail.item.edit.html',
+                            controller: 'MultiformDetailsItemEditController'
+                        }
+                    }
                 });
+                
             }]);

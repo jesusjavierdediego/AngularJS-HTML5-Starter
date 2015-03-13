@@ -23,11 +23,11 @@ This constants can be used to set basic information related to the application.
 All data are auto-explained because their names ;)
  */
 .constant('PROJECT_DATA', {
-    ApplicationName: 'Appverse Web HTML5 Incubator Demo',
-    Version: '0.1',
-    Company: 'GFT',
-    Year: '2013',
-    Team: 'GFT Appverse Web',
+    ApplicationName: 'App Demo',
+    Version: '1.0',
+    Company: '',
+    Year: '2015',
+    Team: '',
     URL: '',
     LoginViewPath: '/login',
     myUrl: ''
