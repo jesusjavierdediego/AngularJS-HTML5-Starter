@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1,
+        "name": "Debit Ledger Type 1"
+    },
+    {
+        "id": 2,
+        "name": "Debit Ledger Type 2"
+    },
+    {
+        "id": 3,
+        "name": "Debit Ledger Type 3"
+    }
+
+  ]
