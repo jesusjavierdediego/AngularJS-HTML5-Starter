@@ -79,26 +79,19 @@ angular.module('App.Controllers')
             $scope.so1Object.excludedEntryFromDailyStatement;
 
 
-            $scope.sendForm = function(){
-                $log.debug("Object to send: " + angular.toJson($scope.so1Object, true));
-            };
-            //Example: You can validate data in controller as well, eg against server
-           /* $scope.sendForm = {
-                onSubmit: function(event) {
-                    $log.debug("Object to send: " + angular.toJson($scope.so1Object, true));
-                    if (dataIsntValid) {
-                        displayErrors();
-                        event.preventDefault();
-                    }else {
-                        submitData();
-                    }
+            //You can validate data in controller as well, eg against server
+            $scope.sendForm = function(so1Object) {
+                $scope.PerformManualEntryForm.submitted = true;
+                if($scope.PerformManualEntryForm.$valid) {
+                    // DO SOMETHING
+                    $log.debug("Object to send: " + angular.toJson(so1Object, true));
+                } else {
+                    $log.debug('Errors in form data');
                 }
-            };*/
+            };
 
             $scope.resetForm = function(){
                 $scope.so1Object = {};
-
-
                 $log.debug("Form has been reset.");
             };
 

@@ -13,6 +13,16 @@ describe('Unit: Testing Controllers', function () {
         controller = $controller;
     }));
 
+    it('should have a properly working PerformManualEntryCtrl', function () {
+        controller('PerformManualEntryCtrl', {
+            '$scope': scope,
+            'RESTFactory': {
+                readList: function () {}
+            }
+        });
+        expect(scope.notes).to.equal(undefined);
+    });
+
     it('should have a properly working cacheController', function () {
         controller('simpleIDBController', {
             '$scope': scope,

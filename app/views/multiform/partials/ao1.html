@@ -2,25 +2,33 @@
     <p class="lead">{{menuItem}}</p>
 
     <div ng-controller="PerformManualEntryCtrl" class="row-fluid">
-        <form name="PerformManualEntryForm" novalidate ng-submit="PerformManualEntryForm.$valid && sendForm()">
+        <form name="PerformManualEntryForm" ng-submit="PerformManualEntryForm.$valid">
             <div class="row">
                 <div class="span6" id="debit">
                     <label>Debit Account:</label>
                     <select class="standardSelect"
+                            name="debitLedgerType"
                             ng-change='changeDebitAgentStatus()'
                             ng-model="so1Object.debitLedgerType"
                             ng-model-options="{ debounce: 250 }"
-                            ng-options="debitLedgerType.id as debitLedgerType.name for debitLedgerType in debitLedgerTypes">
+                            ng-options="debitLedgerType.id as debitLedgerType.name for debitLedgerType in debitLedgerTypes"
+                            required
+                        >
                         <option value="">Choose a ledger type ...</option>
                     </select>
+                    <span class="error" ng-show="PerformManualEntryForm.debitLedgerType.$error.required">*</span>
                     <label>Debit Agent:</label>
                     <select class="standardSelect"
+                            name="debitAgent"
                             ng-disabled="debitAgentStatus"
                             ng-model="so1Object.debitAgent"
                             ng-model-options="{ debounce: 250 }"
-                            ng-options="debitAgent.id as debitAgent.name for debitAgent in debitAgents">
+                            ng-options="debitAgent.id as debitAgent.name for debitAgent in debitAgents"
+                            required
+                        >
                         <option value="">Choose an agent ...</option>
                     </select>
+                    <span class="error" ng-show="PerformManualEntryForm.debitAgent.$error.required">*</span>
                 </div>
             </div>
 
@@ -28,18 +36,28 @@
                 <div class="span6" id="credit">
                     <label>Credit Account:</label>
                     <select class="standardSelect"
+                            name="creditLedgerType"
+                            ng-disabled="debitAgentStatus"
                             ng-model="so1Object.creditLedgerType"
                             ng-model-options="{ debounce: 250 }"
-                            ng-options="creditLedgerType.id as creditLedgerType.name for creditLedgerType in creditLedgerTypes">
+                            ng-options="creditLedgerType.id as creditLedgerType.name for creditLedgerType in creditLedgerTypes"
+                            required
+                        >
                         <option value="">Choose a ledger type ...</option>
                     </select>
+                    <span class="error" ng-show="PerformManualEntryForm.creditLedgerType.$error.required">*</span>
                     <label>Credit Agent:</label>
                     <select class="standardSelect"
+                            name="creditAgent"
+                            ng-disabled="debitAgentStatus"
                             ng-model="so1Object.creditAgent"
                             ng-model-options="{ debounce: 250 }"
-                            ng-options="creditAgent.id as creditAgent.name for creditAgent in creditAgents">
+                            ng-options="creditAgent.id as creditAgent.name for creditAgent in creditAgents"
+                            required
+                        >
                         <option value="">Choose an agent ...</option>
                     </select>
+                    <span class="error" ng-show="PerformManualEntryForm.creditAgent.$error.required">*</span>
                 </div>
             </div>
 
@@ -48,20 +66,39 @@
                 <div class="span4" id="trans">
                     <label>Trans type:</label>
                     <select class="standardSelect"
+                            placeholder="TransactionType.."
+                            name="txType"
                             ng-model="so1Object.txType"
                             ng-model-options="{ debounce: 250 }"
-                            ng-options="txType.id as txType.name for txType in txTypes">
+                            ng-options="txType.id as txType.name for txType in txTypes"
+                            required
+                        >
                         <option value="">Choose a transaction type ...</option>
                     </select>
+                    <span class="error" ng-show="PerformManualEntryForm.txType.$error.required">*</span>
                     <label>Amount:</label>
-                    <input type="text" ng-model="so1Object.amount" ng-model-options="{ debounce: 250 }" /><br />
+                    <input type="number" name="amount" ng-model="so1Object.amount" ng-model-options="{ debounce: 250 }" required>
+                    <span class="text-error" ng-show="PerformManualEntryForm.amount.$error.required">*</span>
+                    <span class="text-error" ng-show="PerformManualEntryForm.amount.$invalid && PerformManualEntryForm.amount.$dirty
+">Invalid Data</span>
+                    <br />
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6" id="comment">
                     <label>Comment:</label>
-                    <input type="text" ng-model="so1Object.comment" ng-model-options="{ debounce: 250 }" /><br />
+                    <input
+                        type="text"
+                        name="comment"
+                        ng-model="so1Object.comment"
+                        ng-model-options="{ debounce: 250 }"
+                        ng-maxlength=20
+                        placeholder="Comment.."
+                        required
+                        >
+                    <span class="error" ng-show="PerformManualEntryForm.comment.$error.required">*</span>
+                    <br />
                 </div>
             </div>
 
@@ -69,40 +106,51 @@
                 <div class="span8" id="mtcn">
 
                     <label>Related MTCN:</label>
-                    <input type="text" ng-model="so1Object.relatedMTCN" ng-model-options="{ debounce: 250 }" /><br />
+                    <input
+                        type="text"
+                        name="relatedMTCN"
+                        ng-model="so1Object.relatedMTCN"
+                        ng-model-options="{ debounce: 250 }"
+                        placeholder="Related MTCN.."
+                        required
+                        >
+                    <span class="error" ng-show="PerformManualEntryForm.relatedMTCN.$error.required">*</span>
+                    <br />
 
                     <label>MTCN Date:</label>
-                    <input type="date" id="MTCNDate"
-                           name="input"
+                    <input type="date"
+                           id="MTCNDate"
+                           name="MTCNDate"
                            ng-model="so1Object.MTCNDate"
-                           placeholder="yyyy-MM-dd"
+                           placeholder="MTCN Date.."
                            min="2015-01-01"
                            max="2016-12-31"
-                           required />
-                    <span class="error" ng-show="PerformManualEntryForm.input.$error.required">Required!</span>
-                    <span class="error" ng-show="PerformManualEntryForm.input.$error.date">Not a valid date!</span>
+                           required
+                        >
+                    <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.required">*</span>
+                    <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.date">Not a valid date!</span>
 
                     <label>Date of Entry:</label>
-                    <input type="date" id="entryDate"
-                           name="input"
+                    <input type="date"
+                           id="entryDate"
+                           name="EntryDate"
                            ng-model="so1Object.EntryDate"
-                           placeholder="yyyy-MM-dd"
+                           placeholder="Entry Date.."
                            min="2015-01-01"
                            max="2016-12-31"
-                           required />
-                    <span class="error" ng-show="PerformManualEntryForm.input.$error.required">Required!</span>
-                    <span class="error" ng-show="PerformManualEntryForm.input.$error.date">Not a valid date!</span>
-                    <tt>value = {{example.value | date: "yyyy-MM-dd"}}</tt><br/>
-                    <tt>PerformManualEntryForm.input.$valid = {{PerformManualEntryForm.input.$valid}}</tt><br/>
-                    <tt>PerformManualEntryForm.input.$error = {{PerformManualEntryForm.input.$error}}</tt><br/>
-                    <tt>PerformManualEntryForm.$valid = {{PerformManualEntryForm.$valid}}</tt><br/>
-                    <tt>PerformManualEntryForm.$error.required = {{!!PerformManualEntryForm.$error.required}}</tt><br/>
+                           required
+                        >
+                    <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.required">*</span>
+                    <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.date">Not a valid date!</span>
                 </div>
             </div>
 
             <input class="btn" type="button" ng-click="resetForm(PerformManualEntryForm)" value="Reset" />
-            <input class="btn" type="submit" ng-click="sendForm(so1Object)" value="Save" />
-            <input class="btn" type="submit" value="Log in" ng-click="onSubmit($event)">
+            <input class="btn"
+                   type="submit"
+                   ng-click="sendForm(so1Object)"
+                   value="Save"
+                />
         </form>
 
     </div>

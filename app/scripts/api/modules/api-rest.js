@@ -66,7 +66,7 @@ angular.module('AppREST', ['restangular', 'AppCache', 'AppConfiguration', 'AppSe
                  */
                 //var tokenInHeader = response.headers(SECURITY_GENERAL.tokenResponseHeaderName);
                 var tokenInHeader = response.headers('X-XSRF-Cookie');
-                $log.debug('X-XSRF-Cookie: ' + tokenInHeader);
+                //$log.debug('X-XSRF-Cookie: ' + tokenInHeader);
                 if(tokenInHeader){
 
                     Oauth_AccessToken.setFromHeader(tokenInHeader);
