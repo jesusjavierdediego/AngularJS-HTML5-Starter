@@ -9,7 +9,7 @@ AngularJS App Starter
 
 ```script
 npm install -g bower
-npm install -g grunt
+npm install -g grunt-cli
 ```
 
 ## Running
