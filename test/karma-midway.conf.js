@@ -13,8 +13,6 @@ module.exports = function (config) {
 
     conf.files = conf.files.concat([
 
-        'app/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js',
-        'app/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js',
         'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
         //extra testing code

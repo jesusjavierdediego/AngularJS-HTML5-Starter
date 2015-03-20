@@ -13,15 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-    <!-- build:css styles/vendor.css -->
-    <link rel="stylesheet" href="styles/jquery.mobile-1.3.2.min.css">
-    <link rel="stylesheet" href="styles/angular-jqm.css">
-<!--    <link rel="stylesheet" href="styles/cpustyle.css">-->
-    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
-    <link rel="stylesheet" href="bower_components/ng-grid/ng-grid.min.css">
-    <!-- endbuild -->
 
     <!-- build:css(.tmp) styles/styles.css -->
     <link rel="stylesheet" href="styles/bootstrap.css">
@@ -42,19 +33,13 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-
-
     <div ui-view class="myslide" autoscroll="false"></div>
 
     <!-- build:js scripts/scripts.js -->
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.min.js"></script>
-    <script src="bower_components/modernizr/modernizr.js"></script>
 
     <!-- uibootstrap -->
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
     <!-- modules -->
@@ -63,47 +48,21 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-cache/dist/angular-cache.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="bower_components/ng-grid/build/ng-grid.min.js"></script>
-
-    <!-- UI components -->
-    <script src="bower_components/venturocket-angular-slider/build/angular-slider.min.js"></script>
-    <script src="bower_components/qrcode/lib/qrcode.min.js"></script>
-    <script src="bower_components/angular-qr/angular-qr.min.js"></script>
-    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
 
     <!-- ########## API modules ########## -->
+    <script src="scripts/api/modules/api-security.js"></script>
+    <script src="scripts/api/modules/api-utils.js"></script>
     <script src="scripts/api/modules/api-cache.js"></script>
     <script src="scripts/api/modules/api-configuration.js"></script>
     <script src="scripts/api/modules/api-detection.js"></script>
     <script src="scripts/api/modules/api-logging.js"></script>
     <script src="scripts/api/modules/api-main.js"></script>
-
     <!-- REST module -->
     <script src="bower_components/lodash/dist/lodash.underscore.min.js"></script>
     <script src="bower_components/restangular/dist/restangular.min.js"></script>
     <script src="scripts/api/modules/api-rest.js"></script>
-
     <!-- Security module -->
-    <script src="scripts/api/modules/api-security.js"></script>
-
-    <!-- Server Push module -->
-    <script src="bower_components/socket.io-client/dist/socket.io.min.js"></script>
-    <script src="scripts/api/modules/api-serverpush.js"></script>
-
-
-    <!-- Translate module -->
-<!--    <script src="scripts/api/modules/api-translate.js"></script>
-    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
-    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
-    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>-->
-
-    <script src="scripts/api/modules/api-utils.js"></script>
-
-    <!-- Directives should be included after the modules -->
-    <script src="scripts/api/directives/cache-directives.js"></script>
-    <script src="scripts/api/directives/rest-directives.js"></script>
-    <script src="scripts/api/modules/api-performance.js"></script>
-
+    
     <!-- app -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/multiform-controllers.js"></script>

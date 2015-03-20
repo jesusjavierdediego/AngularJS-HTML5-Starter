@@ -12,13 +12,4 @@ describe('Unit: Testing AppCache module', function () {
             expect(CacheFactory).to.be.an.object;
         })
     );
-
-    it('should contain a IDBService service',
-        inject(function (IDBService) {
-
-            expect(IDBService).to.be.an.object;
-
-            expect(IDBService.isSupported()).to.be.false;
-        })
-    );
 });

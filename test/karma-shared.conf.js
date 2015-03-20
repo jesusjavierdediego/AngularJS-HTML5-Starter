@@ -39,8 +39,6 @@ module.exports = function () {
             'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'app/bower_components/angular-cache/dist/angular-cache.min.js',
             'app/bower_components/angular-resource/angular-resource.min.js',
-            'app/bower_components/ng-grid/build/ng-grid.min.js',
-            'app/bower_components/socket.io-client/dist/socket.io.min.js',
  //            'http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js',
 
             //App-specific Code
@@ -50,7 +48,7 @@ module.exports = function () {
             'app/scripts/api/modules/api-cache.js',
             'app/scripts/api/modules/api-configuration.js',
             'app/scripts/api/modules/api-detection.js',
- //            'app/scripts/api/modules/api-logging.js',
+            'app/scripts/api/modules/api-logging.js',
             'app/scripts/api/modules/api-main.js',
 
             'app/bower_components/lodash/dist/lodash.underscore.min.js',
@@ -59,18 +57,8 @@ module.exports = function () {
 
             'app/scripts/api/modules/api-security.js',
 
-            'app/scripts/api/modules/api-serverpush.js',
-
-            'app/scripts/api/modules/api-translate.js',
-            'app/bower_components/angular-translate/angular-translate.min.js',
-            'app/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js',
-            'app/bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js',
-
-            'app/scripts/api/modules/api-performance.js',
-
             'app/scripts/api/modules/api-utils.js',
 
-            'app/scripts/api/directives/*.js',
             'app/scripts/app.js',
             'app/scripts/controllers/*.js',
             'app/scripts/factories/*.js',

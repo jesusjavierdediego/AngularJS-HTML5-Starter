@@ -125,11 +125,6 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
-            //            ,
-            //            doc: {
-            //                files: ['{.tmp,<%= yeoman.app %>}/scripts/**/*.js'],
-            //                tasks: ['docular']
-            //            }
         },
         autoprefixer: {
             options: ['last 2 version'],
@@ -256,10 +251,8 @@ module.exports = function (grunt) {
         uglify: {
             dist: {
                 files: {
-                    '<%= yeoman.dist %>/scripts/api/angular-jqm.js': ['<%= yeoman.app %>/scripts/api/angular-jqm.js'],
                     '<%= yeoman.dist %>/bower_components/angular-animate/angular-animate.js': ['<%= yeoman.app %>/bower_components/angular-animate/angular-animate.js'],
                     '<%= yeoman.dist %>/bower_components/angular-route/angular-route.js': ['<%= yeoman.app %>/bower_components/angular-route/angular-route.js'],
-                    '<%= yeoman.dist %>/bower_components/angular-touch/angular-touch.js': ['<%= yeoman.app %>/bower_components/angular-touch/angular-touch.js']
                 }
             }
         },
@@ -462,44 +455,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        docular: {
-            showDocularDocs: false,
-            showAngularDocs: true,
-            docular_webapp_target: "doc",
-            groups: [
-                {
-                    groupTitle: 'AngularJSHTML5',
-                    groupId: 'angularjs',
-                    groupIcon: 'icon-beer',
-                    sections: [
-                        {
-                            id: "commonapi",
-                            title: "Common API",
-                            showSource: true,
-                            scripts: ["app/scripts/api/modules", "app/scripts/api/directives"
-                            ],
-                            docs: ["ngdocs/commonapi"],
-                            rank: {}
-                        }
-                    ]
-                }, {
-                    groupTitle: 'Angular jQM',
-                    groupId: 'angular-jqm',
-                    groupIcon: 'icon-mobile-phone',
-                    sections: [
-                        {
-                            id: "jqmapi",
-                            title: "API",
-                            showSource: true,
-                            scripts: ["app/scripts/api/angular-jqm.js"
-                            ],
-                            docs: ["ngdocs/jqmapi"],
-                            rank: {}
-                        }
-                    ]
-                }
-            ]
-        },
         protractor_webdriver: {
             start: {
                 options: {
@@ -599,17 +554,6 @@ module.exports = function (grunt) {
         'makeReport'
     ]);
 
-    grunt.registerTask('doc', [
-        'clean:doc',
-        'docular'
-    ]);
-
-    grunt.registerTask('doc:watch', [
-        'doc',
-        'connect:doc',
-        'open:doc',
-        'watch:doc'
-    ]);
 
     grunt.registerTask('dist', [
         'clean:dist',

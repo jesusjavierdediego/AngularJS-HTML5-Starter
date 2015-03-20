@@ -510,140 +510,15 @@ Future updates of Restangular imply review of this section in order to keep cons
     disconnected: 'disconnected',
     notEnabled: 'Security not enabled'
 
-})
+});
 
-.constant('SECURITY_OAUTH', {
-    oauth2_endpoint: 'unknown',
-    clientID: '',
-    profile: 'http://localhost:8080/html5-incubator-server',
-    scope: 'resources',
-    scopeURL: 'http://localhost:8080/html5-incubator-server',
-    scope_authorizePath: '/oauth/authorize',
-    scope_tokenPath: '/oauth/token',
-    scope_flow: 'implicit',
-    scope_view: 'standard',
-    scope_storage: 'none',
-    scope_template: 'views/demo/security/oauth_default.html',
-    redirectURL: 'http://localhost:9000',
-    storage: 'cookies',
-    storage_cookies: 'cookies',
-    storage_header: 'header',
-    tokenResponseHeaderName: 'Authorization'
-})
 
-/*
- * GOOGLE AUTHENTICATION
- */
-.constant('GOOGLE_AUTH', {
-    clientID: '75169325484-8cn28d7o3dre61052o8jajfsjlnrh53i.apps.googleusercontent.com',
-    scopeURL: 'https://www.googleapis.com/auth/plus.login',
-    requestvisibleactionsURL: 'http://schemas.google.com/AddActivity',
-    theme: 'dark',
-    cookiepolicy: 'single_host_origin',
-    revocationURL: 'https://accounts.google.com/o/oauth2/revoke?token=',
-    /*
-     * Policy about token renewal:
-     * revocation: if the token is invalid the user is fordec to logout and warned.
-     * manual_renovation: the user is warned about the token validity. Renewal is proposed.
-     * automatic_renovation: the token is automatically renewed.
-     */
-    revocation: 'revocation',
-    manual_renovation: 'manual_renovation',
-    automatic_renovation: 'automatic_renovation',
-    tokenRenewalPolicy: this.automatic_renovation
-})
 
-/*
- *
- */
-.constant('AUTHORIZATION_DATA', {
-    roles: ['user', 'admin', 'editor'],
-    adminRoles: ["ROLE_EXAMPLE","ROLE_EXAMPLE_2","ROLE_REMOTE_LOGGING_WRITER","ROLE_USER"],
-    users: ['Jesus de Diego'],
-    userRoleMatrix: [
-        {
-            'user': 'Jesus de Diego',
-            'roles': ["ROLE_EXAMPLE","ROLE_EXAMPLE_2","ROLE_REMOTE_LOGGING_WRITER","ROLE_USER"]
-        },
-        {
-            'user': 'Antoine Charnoz',
-            'roles': ["ROLE_EXAMPLE","ROLE_EXAMPLE_2","ROLE_REMOTE_LOGGING_WRITER","ROLE_USER"]
-        }
-    ],
-    routesThatDontRequireAuth: ['/home'],
-    routesThatRequireAdmin: ['/about']
-})
 
-/*
-WEBSOCKETS MODULE CONFIGURATION
-*/
-.constant('WEBSOCKETS_CONFIG', {
 
-    WS_ECHO_URL: "ws://echo.websocket.org",
-    WS_CPU_URL: "ws://localhost:8080/websocket/services/websocket/statistics/get/cpuload",
-    WS_CPU_INTERVAL: 30,
-    WS_CONNECTED: 'Websocket connected',
-    WS_DISCONNECTED: 'Websocket disconnected',
-    WS_CONNECTING: 'Connecting Websocket...',
-    WS_CLOSED: 'Websocket connection closed',
-    WS_CLOSING: 'Websocket connection closing...',
-    WS_OPEN: 'Websocket connection is open',
-    WS_UNKNOWN: 'Websocket status is unknown',
-    WS_FAILED_CONNECTION: 'Failed to open a Websocket connection',
-    WS_NOT_SUPPORTED: 'HTML5 Websockets specification is not supported in this browser.',
-    WS_SUPPORTED: 'HTML5 Websockets specification is supported in this browser.'
-})
 
-/////////////////////////////
-//PERFORMANCE
-//Includes default information about the different facets for a better performance in the app.
-//There are three main sections: webworkers management, shadow dom objetc and High performance DOM directive.
-/////////////////////////////
-.constant('PERFORMANCE_CONFIG', {
-/*
- * WEBWORKERS SECTION
- * To test multiple parallelized threads with web workers a thread pool or task queue is defined.
- * The goal is focused on using enough threads to improve the execution but not too much or the browser system can turn
- * into unstable.
- * You can configure the maximum number of concurrent web workers when this pool is instantiated,
- * and any 'task' you submit will be executed using one of the available threads from the pool.
- * Note that the app is not really pooling threads, but just using this pool to control the number of concurrently
- * executing web workers due to the high cost for start them.
- */
-        /*
-        Maximum number of simultaneous executing threads used by workers
-         */
-        webworker_pooled_threads: 4,
-        /*
-        If true, only workers in the web worker_authorized_workers property might be executed.
-        Other invoked workers will not result in a worker call.
-         */
-        webworker_authorized_workers_only: true,
-        /*
-        Folder for workers' files
-         */
-        webworker_directory: "resources/webworkers/",
-        /*
-        List of authorized workers with its ID.
-        The ID is used to be passed in the directive's attribute.
-         */
-        webworker_authorized_workers: [
-            {
-                'id': 'w1',
-                'type': 'dedicated',
-                'poolSize': 4,
-                'file': 'RenderImage.js'
-            },
-            {
-                'id': 'w2',
-                'type': 'dedicated',
-                'poolSize': 4,
-                'file': 'RestMultiRequest.js'
-            }
-        ],
-        webworker_dedicated_literal: "dedicated",
-        webworker_shared_literal: "shared",
-        webworker_Message_template: 'scripts/api/directives/webworkerMessage.html'
-    });
+
+
+
 
 

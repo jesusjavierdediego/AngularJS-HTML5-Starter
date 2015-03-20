@@ -101,26 +101,26 @@ angular.module('AppDetection', [])
         }
 
         if (this.hasAppverseMobile || this.isMobileBrowser) {
-            $.ajax({
-                async: false,
-                url: "bower_components/angular-touch/angular-touch.js",
-                dataType: 'script'
-            });
-            $.ajax({
-                async: false,
-                url: "bower_components/angular-animate/angular-animate.js",
-                dataType: 'script'
-            });
+//            $.ajax({
+//                async: false,
+//                url: "bower_components/angular-touch/angular-touch.js",
+//                dataType: 'script'
+//            });
+//            $.ajax({
+//                async: false,
+//                url: "bower_components/angular-animate/angular-animate.js",
+//                dataType: 'script'
+//            });
             $.ajax({
                 async: false,
                 url: "bower_components/angular-route/angular-route.js",
                 dataType: 'script'
             });
-            $.ajax({
-                async: false,
-                url: "scripts/api/angular-jqm.js",
-                dataType: 'script'
-            });
+//            $.ajax({
+//                async: false,
+//                url: "scripts/api/angular-jqm.js",
+//                dataType: 'script'
+//            });
         } else {
             angular.module('jqm', []);
         }
