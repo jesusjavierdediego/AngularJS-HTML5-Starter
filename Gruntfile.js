@@ -252,7 +252,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '<%= yeoman.dist %>/bower_components/angular-animate/angular-animate.js': ['<%= yeoman.app %>/bower_components/angular-animate/angular-animate.js'],
-                    '<%= yeoman.dist %>/bower_components/angular-route/angular-route.js': ['<%= yeoman.app %>/bower_components/angular-route/angular-route.js'],
+                    '<%= yeoman.dist %>/bower_components/angular-route/angular-route.js': ['<%= yeoman.app %>/bower_components/angular-route/angular-route.js']
                 }
             }
         },
@@ -325,7 +325,7 @@ module.exports = function (grunt) {
                     useShortDoctype: true,
                     removeEmptyAttributes: true,
                     removeOptionalTags: true,
-                    keepClosingSlash: true,
+                    keepClosingSlash: true
                 },
                 files: [{
                     expand: true,
