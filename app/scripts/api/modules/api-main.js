@@ -23,6 +23,7 @@ angular.forEach(optionalModules, function (element) {
     } catch (e) {
         angular.module(element, []);
     }
+    
 });
 
 /* Main module */
