@@ -5,6 +5,7 @@ body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    padding: 10px;
 }
 
 .hero-unit {
@@ -68,8 +69,13 @@ a.navbar-brand img {
 }
 
 //form
-.standardSelect {
+.standardControl {
     width: 300px;
 }
 
-
+.ng-invalid.ng-dirty{
+  border-color: #FA787E;
+}
+.ng-valid.ng-dirty{
+  border-color: #78FA89;
+}
