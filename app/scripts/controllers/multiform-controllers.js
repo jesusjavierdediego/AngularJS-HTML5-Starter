@@ -45,7 +45,7 @@ angular.module('App.Controllers')
 
             //capture events from UI controls and implement behavior
             $scope.changeDebitAgentStatus = function(){
-                $log.debug("change in control.");
+                $log.debug("change in control: " + $scope.so1Object.debitLedgerType);
                 if($scope.so1Object.debitLedgerType){
                     $scope.debitAgentStatus = false;
                 }else{
@@ -95,17 +95,28 @@ angular.module('App.Controllers')
                 $log.debug("Form has been reset.");
             };
 
-/*            myApp.factory('myRestService', ['Restangular', function(Restangular) {
-                return {
-                    myFunction: function(varA, varB, varC) {
-                        var path = "rest/primaryPath/" + varA + "/" + varB + "/" + varC;
-                        var restObject = Restangular.all(path);
-                        var thePromise = restObject.getList();
+}])
 
-                        return thePromise;
-                    }
-                };
-            }]);*/
+.controller('TypeaheadDemoCtrl', ['$scope', '$templateCache', '$http',
+    function($scope, $templateCache, $http) {
+
+  $scope.selectedState = '';
+  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+
+  $scope.selectedIcon = '';
+
+  $scope.selectedAddress = '';
+  $scope.getAddress = function(viewValue) {
+    var params = {address: viewValue, sensor: false};
+    return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {params: params})
+    .then(function(res) {
+      return res.data.results;
+    });
+  };
+  
+  $scope.selectedItem = '';
+  $scope.items = ['FIRST', 'SECOND'];
 
 }]);
+
 

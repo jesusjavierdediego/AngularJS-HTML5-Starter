@@ -26,21 +26,4 @@ describe('PerformManualEntryForm Test Suite',function(){
         browser.executeScript(scr);
     }
     
-//    it('should initialize to model', function() {
-//        expect(value.getText()).toContain('2015-10-22');
-//        expect(valid.getText()).toContain('PerformManualEntryForm.MTCNDate.$valid = true');
-//    });
-//   
-//
-//    it('should be invalid if empty', function() {
-//        setInput('');
-//        expect(value.getText()).toEqual('value =');
-//        expect(valid.getText()).toContain('PerformManualEntryForm.MTCNDate.$valid = false');
-//    });
-//
-//    it('should be invalid if over max', function() {
-//        setInput('2100-01-01');
-//        expect(value.getText()).toContain('');
-//        expect(valid.getText()).toContain('PerformManualEntryForm.MTCNDate.$valid = false');
-//    });
 });

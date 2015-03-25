@@ -27,7 +27,7 @@ angular.forEach(optionalModules, function (element) {
 });
 
 /* Main module */
-angular.module('COMMONAPI', optionalModules.concat(['ui.router', 'AppCache', 'AppConfiguration']))
+angular.module('COMMONAPI', optionalModules.concat(['ui.router', 'ngAnimate', 'ngSanitize', 'AppCache', 'AppConfiguration', 'mgcrea.ngStrap']))
 
 .run(['$rootScope', '$state', '$stateParams',
         function ($rootScope, $state, $stateParams) {
@@ -40,8 +40,19 @@ angular.module('COMMONAPI', optionalModules.concat(['ui.router', 'AppCache', 'Ap
         $rootScope.$stateParams = $stateParams;
     }])
 
-.config(['$compileProvider',
-    function ($compileProvider) {
+.config(['$compileProvider', '$typeaheadProvider', '$selectProvider',
+    function ($compileProvider, $typeaheadProvider, $selectProvider) {
 
         $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|itms-services):/);
+        
+        angular.extend($typeaheadProvider.defaults, {
+              animation: 'am-flip-x',
+              minLength: 2,
+              limit: 8
+            });
+
+            angular.extend($selectProvider.defaults, {
+              animation: 'am-flip-x',
+              sort: false
+            });
         }]);

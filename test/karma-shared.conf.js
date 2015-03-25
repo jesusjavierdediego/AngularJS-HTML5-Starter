@@ -26,7 +26,7 @@ module.exports = function () {
         autoWatch: true,
 
         // these are default values anyway
-        singleRun: false,
+        singleRun: true,
         colors: true,
 
         files: [
