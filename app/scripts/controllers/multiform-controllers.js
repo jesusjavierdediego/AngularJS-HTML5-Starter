@@ -80,14 +80,18 @@ angular.module('App.Controllers')
 
 
             //You can validate data in controller as well, eg against server
-            $scope.sendForm = function(so1Object) {
+            /*$scope.sendForm = function(so1Object) {
                 $scope.PerformManualEntryForm.submitted = true;
                 if($scope.PerformManualEntryForm.$valid) {
-                    // DO SOMETHING
                     $log.debug("Object to send: " + angular.toJson(so1Object, true));
                 } else {
                     $log.debug('Errors in form data');
                 }
+            };*/
+
+            $scope.sendForm = function(so1Object) {
+                $scope.PerformManualEntryForm.submitted = true;
+                $log.debug("Object to send: " + angular.toJson(so1Object, true));
             };
 
             $scope.resetForm = function(){
