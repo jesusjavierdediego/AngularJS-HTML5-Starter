@@ -6,7 +6,7 @@
  */
 angular.module('App.Directives')
 
-.directive('validFloatNumber', function ($filter) {
+/*.directive('validFloatNumber', function ($filter) {
     var FLOAT_REGEXP_1 = /^\$?\d+.(\d{3})*(\,\d*)$/; //Numbers like: 1.123,56
     var FLOAT_REGEXP_2 = /^\$?\d+,(\d{3})*(\.\d*)$/; //Numbers like: 1,123.56
     var FLOAT_REGEXP_3 = /^\$?\d+(\.\d*)?$/; //Numbers like: 1123.56
@@ -41,4 +41,50 @@ angular.module('App.Directives')
            );
         }
     };
+})*/
+
+
+
+.directive('validFloatNumber', function() {
+  return {
+    require: '?ngModel',
+    link: function(scope, element, attrs, ngModelCtrl) {
+      if(!ngModelCtrl) {
+        return; 
+      }
+
+      ngModelCtrl.$parsers.push(function(val) {
+        if (angular.isUndefined(val)) {
+            var val = '';
+        }
+        var clean = val.replace( /[^0-9.]+/g, '');
+		var isNumber = isNaN(clean);
+        if(isNumber){
+        	clean.substring(0, clean.length - 1);
+        }
+
+        if(clean.match(/[^.]+/g).length > 2){
+        	clean = val.replace( /[^0-9]+/g, '');
+        }
+
+        clean = Number(clean).toFixed(2);
+		clean = Number(clean).toLocaleString('en');
+
+        if (val !== clean) {
+          ngModelCtrl.$setViewValue(clean);
+          ngModelCtrl.$render();
+        }
+       
+        //console.log("clean is: " + clean);
+
+        return clean;
+      });
+
+      element.bind('keypress', function(event) {
+        if(event.keyCode === 32) {
+          event.preventDefault();
+        }
+      });
+    }
+  };
 });
