@@ -56,28 +56,39 @@ angular.module('App.Directives')
 	      }
 
 	      ngModelCtrl.$parsers.push(function(val) {
+
 	        if (angular.isUndefined(val)) {
 	            var val = '';
 	        }
-	        var clean = val.replace( /[^0-9.]+/g, '');
-			var isNumber = isNaN(clean);
-	        if(isNumber){
-	        	clean.substring(0, clean.length - 1);
-	        }
 
-	        if(clean.match(/[^.]+/g).length > 2){
+	        var clean = val.replace( /[^0-9.]+/g, '');
+	        var formatNumber = true;
+
+	        if(!isNaN(clean)){
+	        	var first = clean.indexOf('.');
+	        	var last = clean.lastIndexOf('.');
+	        	if(first !== -1 && first === last && clean.length === last +1){
+					formatNumber = false;
+	        	}
+	        }else{
 	        	clean = val.replace( /[^0-9]+/g, '');
 	        }
-
+	        
 	        clean = Number(clean).toFixed(decimals);
 			clean = Number(clean).toLocaleString(locale);
+
+			if(clean === "0"){
+				clean ="";
+			}
+
+			if(!formatNumber){
+				clean = clean + '.';
+	        }
 
 	        if (val !== clean) {
 	          ngModelCtrl.$setViewValue(clean);
 	          ngModelCtrl.$render();
 	        }
-	       
-	        //console.log("clean is: " + clean);
 
 	        return clean;
 	      });
