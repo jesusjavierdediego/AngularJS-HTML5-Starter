@@ -49,42 +49,44 @@ angular.module('App.Directives')
   return {
     require: '?ngModel',
     link: function(scope, element, attrs, ngModelCtrl) {
-      if(!ngModelCtrl) {
-        return; 
-      }
+    	  var locale = attrs.locale;
+    	  var decimals = attrs.decimals;
+	      if(!ngModelCtrl) {
+	        return; 
+	      }
 
-      ngModelCtrl.$parsers.push(function(val) {
-        if (angular.isUndefined(val)) {
-            var val = '';
-        }
-        var clean = val.replace( /[^0-9.]+/g, '');
-		var isNumber = isNaN(clean);
-        if(isNumber){
-        	clean.substring(0, clean.length - 1);
-        }
+	      ngModelCtrl.$parsers.push(function(val) {
+	        if (angular.isUndefined(val)) {
+	            var val = '';
+	        }
+	        var clean = val.replace( /[^0-9.]+/g, '');
+			var isNumber = isNaN(clean);
+	        if(isNumber){
+	        	clean.substring(0, clean.length - 1);
+	        }
 
-        if(clean.match(/[^.]+/g).length > 2){
-        	clean = val.replace( /[^0-9]+/g, '');
-        }
+	        if(clean.match(/[^.]+/g).length > 2){
+	        	clean = val.replace( /[^0-9]+/g, '');
+	        }
 
-        clean = Number(clean).toFixed(2);
-		clean = Number(clean).toLocaleString('en');
+	        clean = Number(clean).toFixed(decimals);
+			clean = Number(clean).toLocaleString(locale);
 
-        if (val !== clean) {
-          ngModelCtrl.$setViewValue(clean);
-          ngModelCtrl.$render();
-        }
-       
-        //console.log("clean is: " + clean);
+	        if (val !== clean) {
+	          ngModelCtrl.$setViewValue(clean);
+	          ngModelCtrl.$render();
+	        }
+	       
+	        //console.log("clean is: " + clean);
 
-        return clean;
-      });
+	        return clean;
+	      });
 
-      element.bind('keypress', function(event) {
-        if(event.keyCode === 32) {
-          event.preventDefault();
-        }
-      });
+	      element.bind('keypress', function(event) {
+	        if(event.keyCode === 32) {
+	          event.preventDefault();
+	        }
+	      });
     }
   };
 });
