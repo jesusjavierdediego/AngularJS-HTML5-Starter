@@ -15,7 +15,17 @@ angular.module('App.Controllers')
 
 .controller('SideMenuCtrl', ["$log", "$rootScope", "$scope", "$stateParams", "$location", "RESTFactory",
     function ($log, $rootScope, $scope, $stateParams, $location, RESTFactory) {
-  $scope.oneAtATime = true;
+  $scope.oneAtATime = false;
+  $scope.toggle = true;
+  $scope.toggleSideMenuButtonValue = "<";
+  $scope.toggleSideMenu = function(){
+    $scope.toggleAction = !$scope.toggleAction;
+    $scope.toggle = !$scope.toggle;
+    if($scope.toggleSideMenuButtonValue == "<")
+        $scope.toggleSideMenuButtonValue = ">";
+    else
+        $scope.toggleSideMenuButtonValue = "<";
+  };
 
   $scope.groups = RESTFactory.readList('sideMenu');
 
@@ -29,11 +39,15 @@ angular.module('App.Controllers')
   };
 }])
 
-.controller('PerformManualEntryCtrl', ["$log", "$scope", "RESTFactory",
-        function($log, $scope, RESTFactory) {
+.controller('PerformManualEntryCtrl', ["$log", "$rootScope", "$scope", "$q", "RESTFactory",
+        function($log, $rootScope, $scope, $q, RESTFactory) {
 
             //Initialize status of controls
             $scope.debitAgentStatus = true;
+            $scope.creditLedgerTypes = '';
+            $scope.debitAgents = '';
+            $scope.creditAgents = '';
+            $scope.txTypes = '';
 
             //Data sources
             $scope.debitLedgerTypes = RESTFactory.readList('debitLedgerTypes');
@@ -41,8 +55,41 @@ angular.module('App.Controllers')
             $scope.debitAgents = RESTFactory.readList('debitAgents');
             $scope.creditAgents = RESTFactory.readList('creditAgents');
             $scope.txTypes = RESTFactory.readList('txTypes');
-
-
+            
+//            var promises = [];
+//            var paths = [];
+//            paths.push('debitLedgerTypes');
+//            paths.push('creditLedgerTypes');
+//            paths.push('debitAgents');
+//            paths.push('creditAgents');
+//            paths.push('txTypes');
+//            
+//            angular.forEach( paths, function(path){
+//                promises.push(RESTFactory.readBatch(path));
+//            });
+//            
+//            angular.forEach( promises, function(promise){
+//                promises.push(RESTFactory.readBatch(path));
+//            });
+//            $q.all(promises).then(showView = true);
+            $rootScope.resolved = false;
+            $log.debug("resolved? " + $rootScope.resolved);
+            $scope.$watch(
+                    function(){
+                         if(
+                            $scope.debitLedgerTypes != '' &&
+                            $scope.creditLedgerTypes != '' &&
+                            $scope.debitAgents != '' &&
+                            $scope.creditAgents != '' &&
+                            $scope.txTypes != ''
+                        ){
+                            $rootScope.resolved = true
+                            $log.debug("resolved? " + $rootScope.resolved);
+                        }
+                    }
+                    
+            );
+           
             //capture events from UI controls and implement behavior
             $scope.changeDebitAgentStatus = function(){
                 $log.debug("change in control: " + $scope.so1Object.debitLedgerType);

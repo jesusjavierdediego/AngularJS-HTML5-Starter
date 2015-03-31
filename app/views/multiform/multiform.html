@@ -1,24 +1,30 @@
 <div class="container">
 <!--    <p class="lead">Multiform Demo</p>-->
-    <div class="row">
-        <div class="col-md-3 col-sm-4">
-            <div class="pa-sidebar well well-small">
-                <label class="checkbox">
-                    <input type="checkbox" ng-model="oneAtATime">
-                    Open only one at a time
-                </label>
-                <accordion close-others="oneAtATime">
-                    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-                        <div ng-repeat="item in group.items">
-                            <a class="list-group-item"  class="list-group-item" ng-class="{ active: $state.includes('multiform.detail') && $stateParams.multiformId == item.value }" ng-click="setMenuItem(item.title)" ui-sref="multiform.detail({multiformId:item.value})">{{item.title}}</a>
-                        </div>
-                    </accordion-group>
-                </accordion>
-                <hr>
+
+    <div class="row" ng-show="resolved">
+        
+        <div class="col-md-3 col-sm-4 ">
+            <div class="" ng-show
+                 ="toggle">
+                <div class="pa-sidebar well well-small">
+                    <accordion close-others="oneAtATime">
+                        <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                            <div ng-repeat="item in group.items">
+                                <a class="list-group-item"  class="list-group-item" ng-class="{ active: $state.includes('multiform.detail') && $stateParams.multiformId == item.value }" ng-click="setMenuItem(item.title)" ui-sref="multiform.detail({multiformId:item.value})">{{item.title}}</a>
+                            </div>
+                        </accordion-group>
+                    </accordion>
+                    <hr>
+                </div>
             </div>
         </div>
-
+        
+        <div class="scrollable" snap-content  snap-options="{tapToClose:true}">
+            <input type="button" ng-click="toggleSideMenu()" value="{{toggleSideMenuButtonValue}}">
+        </div>
         <!-- Our unnamed main ui-view for this template -->
-        <div ui-view class="col-md-9 col-sm-8" autoscroll="false"></div>
+        <div ui-view class="col-md-9 col-sm-8" autoscroll="false" ></div>
+        
+        
     </div>
 </div>

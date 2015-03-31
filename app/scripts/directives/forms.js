@@ -26,7 +26,7 @@ angular.module('App.Directives')
 
                         //Handle onblur event
                         element.bind('blur', function () {
-                            replaceNotvalidFinalChars(transformedViewValue, function(value){
+                            replaceNotvalidFinalChars(transformedViewValue, function (value) {
                                 ngModelCtrl.$setViewValue(value);
                                 ngModelCtrl.$render();
                             });
@@ -55,6 +55,7 @@ angular.module('App.Directives')
                 }
             };
         });
+        
 
 function replaceNotvalidFinalChars(transformedViewValue, callback) {
     if (transformedViewValue.indexOf(',') !== -1) {
@@ -72,4 +73,5 @@ function replaceNotvalidFinalChars(transformedViewValue, callback) {
         }
     }
     callback(transformedViewValue);
-};
+}
+;
