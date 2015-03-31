@@ -16,7 +16,7 @@ angular.module('App.Controllers')
         .controller('SideMenuCtrl', ["$log", "$rootScope", "$scope", "$stateParams", "$location", "RESTFactory",
             function ($log, $rootScope, $scope, $stateParams, $location, RESTFactory) {
                 $scope.oneAtATime = false;
-                $scope.toggle = true;
+                $scope.toggle = false;
                 $scope.toggleSideMenuButtonValue = "<";
                 $scope.toggleSideMenu = function () {
                     $scope.toggleAction = !$scope.toggleAction;

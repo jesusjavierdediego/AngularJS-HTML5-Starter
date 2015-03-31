@@ -81,26 +81,17 @@ a.navbar-brand img {
   border-color: #78FA89;
 }
 
-/*.toggle{
-  -webkit-transition: all linear 1s;
-  -moz-transition: all linear 1s;
-  -ms-transition: all linear 1s;
-  -o-transition: all linear 1s;
-  transition: all linear 1s;
-}
 
-.toggle.ng-enter{
-  opacity: 0;
-}
+.horizontal-hide-animation.ng-hide-add,
+.horizontal-hide-animation.ng-hide-remove {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s 1s;
+  -ms-transition: all 0.5s 1s;
+  -o-transition: all 0.5s 1s;
+  transition: all 0.5s ease-in-out;
 
-.toggle.ng-enter-active{
-  opacity: 1;
+  width:20%;
 }
-
-.toggle.ng-leave{
-  opacity: 1;
+.horizontal-hide-animation.ng-hide {
+   width:0%;
 }
-
-.toggle.ng-leave-active{
-  opacity: 0;
-}*/

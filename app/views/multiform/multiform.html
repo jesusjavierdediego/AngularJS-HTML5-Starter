@@ -3,8 +3,8 @@
     
     <div class="row">
 
-        <div class="col-md-3 col-sm-4 ">
-            <div class="pa-sidebar well well-small" ng-show="toggle">
+        <div class="col-md-3 col-sm-4 horizontal-hide-animation" ng-hide="toggle">
+            <div class="pa-sidebar well well-small" >
                 <accordion close-others="oneAtATime">
                     <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
                         <div ng-repeat="item in group.items">
