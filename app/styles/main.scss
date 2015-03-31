@@ -81,12 +81,12 @@ a.navbar-brand img {
   border-color: #78FA89;
 }
 
-.toggle{
-  -webkit-transition: linear 1s;
-  -moz-transition: linear 1s;
-  -ms-transition: linear 1s;
-  -o-transition: linear 1s;
-  transition: linear 1s;
+/*.toggle{
+  -webkit-transition: all linear 1s;
+  -moz-transition: all linear 1s;
+  -ms-transition: all linear 1s;
+  -o-transition: all linear 1s;
+  transition: all linear 1s;
 }
 
 .toggle.ng-enter{
@@ -103,5 +103,4 @@ a.navbar-brand img {
 
 .toggle.ng-leave-active{
   opacity: 0;
-}
-
+}*/

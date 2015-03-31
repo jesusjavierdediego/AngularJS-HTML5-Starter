@@ -4,185 +4,189 @@
 
 
     <div ng-controller="PerformManualEntryCtrl">
-        <form name="PerformManualEntryForm" ng-submit="PerformManualEntryForm.$valid">
-            <div class="row">
-                <div class="col-xs-5">
-                    <div class="form-group">
+        <div ng-if="resolved">
+            <form name="PerformManualEntryForm" ng-submit="PerformManualEntryForm.$valid">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
 
-                        <label class="control-label" for="debitLedgerType">Debit Account:</label>
-                        <select class="standardControl form-control"
-                                name="debitLedgerType"
-                                ng-change='changeDebitAgentStatus()'
-                                ng-model="so1Object.debitLedgerType"
+                            <label class="control-label" for="debitLedgerType">Debit Account:</label>
+                            <select class="standardControl form-control"
+                                    name="debitLedgerType"
+                                    ng-change='changeDebitAgentStatus()'
+                                    ng-model="so1Object.debitLedgerType"
+                                    ng-model-options="{ debounce: 250 }"
+                                    ng-options="debitLedgerType.id as debitLedgerType.name for debitLedgerType in debitLedgerTypes"
+                                    required
+                                    >
+                                <option value="">Choose a ledger type ...</option>
+                            </select>
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.debitLedgerType.$error.required">Debit Ledger type is required</span>-->
+
+                            <label>Debit Agent:</label>
+                            <select class="standardControl form-control"
+                                    name="debitAgent"
+                                    ng-disabled="debitAgentStatus"
+                                    ng-model="so1Object.debitAgent"
+                                    ng-model-options="{ debounce: 250 }"
+                                    ng-options="debitAgent.id as debitAgent.name for debitAgent in debitAgents"
+                                    required
+                                    >
+                                <option value="">Choose an agent ...</option>
+                            </select>
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.debitAgent.$error.required">Debit agent is required</span>-->
+
+                        </div>             
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>Credit Account:</label>
+                            <select class="standardControl form-control"
+                                    name="creditLedgerType"
+                                    ng-disabled="debitAgentStatus"
+                                    ng-model="so1Object.creditLedgerType"
+                                    ng-model-options="{ debounce: 250 }"
+                                    ng-options="creditLedgerType.id as creditLedgerType.name for creditLedgerType in creditLedgerTypes"
+                                    required
+                                    >
+                                <option value="">Choose a ledger type ...</option>
+                            </select>
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.creditLedgerType.$error.required">Credit Account is required</span>-->
+                            <label>Credit Agent:</label>
+                            <select class="standardControl form-control"
+                                    name="creditAgent"
+                                    ng-disabled="debitAgentStatus"
+                                    ng-model="so1Object.creditAgent"
+                                    ng-model-options="{ debounce: 250 }"
+                                    ng-options="creditAgent.id as creditAgent.name for creditAgent in creditAgents"
+                                    required
+                                    >
+                                <option value="">Choose an agent ...</option>
+                            </select>
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.creditAgent.$error.required">Credit Agent is required</span>-->
+                        </div>             
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>Trans type:</label>
+                            <select class="standardControl form-control"
+                                    name="txType"
+                                    ng-model="so1Object.txType"
+                                    ng-model-options="{ debounce: 250 }"
+                                    ng-options="txType.id as txType.name for txType in txTypes"
+                                    required
+                                    >
+                                <option value="">Choose a transaction type ...</option>
+                            </select>
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.txType.$error.required">Transaction type is required</span>-->
+                            <label>Amount:</label>
+                            <input 
+                                type="text" 
+                                name="amount" 
+                                class="standardControl form-control"
+                                ng-model="so1Object.amount" 
+                                required
+                                placeholder="Amount.."
+                                valid-float-number = "valid-float-number"
+                                >
+
+                            <!--                    <span class="text-error" ng-show="PerformManualEntryForm.amount.$error.required">Amount is required</span>
+                                                <span class="text-error" ng-show="PerformManualEntryForm.amount.$invalid && PerformManualEntryForm.amount.$dirty
+                                                      ">Invalid Data</span>-->
+                        </div>             
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>Comment:</label>
+                            <input
+                                type="text"
+                                name="comment"
+                                class="standardControl form-control"
+                                ng-model="so1Object.comment"
                                 ng-model-options="{ debounce: 250 }"
-                                ng-options="debitLedgerType.id as debitLedgerType.name for debitLedgerType in debitLedgerTypes"
+                                ng-maxlength=20
+                                placeholder="Comment.."
                                 required
                                 >
-                            <option value="">Choose a ledger type ...</option>
-                        </select>
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.debitLedgerType.$error.required">Debit Ledger type is required</span>-->
+                            <!--                        <span class="error" ng-show="PerformManualEntryForm.comment.$error.required">Comment is required</span>-->
+                        </div>             
+                    </div>
 
-                        <label>Debit Agent:</label>
-                        <select class="standardControl form-control"
-                                name="debitAgent"
-                                ng-disabled="debitAgentStatus"
-                                ng-model="so1Object.debitAgent"
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>Related MTCN:</label>
+                            <input
+                                type="text"
+                                name="relatedMTCN"
+                                class="standardControl form-control"
+                                ng-model="so1Object.relatedMTCN"
                                 ng-model-options="{ debounce: 250 }"
-                                ng-options="debitAgent.id as debitAgent.name for debitAgent in debitAgents"
+                                placeholder="Related MTCN.."
                                 required
                                 >
-                            <option value="">Choose an agent ...</option>
-                        </select>
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.debitAgent.$error.required">Debit agent is required</span>-->
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.relatedMTCN.$error.required">Related MTCN is required</span>-->
 
-                    </div>             
+
+
+                        </div>             
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label>MTCN Date:</label>
+                            <input type="date"
+                                   id="MTCNDate"
+                                   name="MTCNDate"
+                                   class="standardControl form-control"
+                                   ng-model="so1Object.MTCNDate"
+                                   placeholder="MTCN Date.."
+                                   min="2015-01-01"
+                                   max="2016-12-31"
+                                   required
+                                   >
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.required">MTCN Date is required</span>
+                                                <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.date">Not a valid date!</span>-->
+                            <label>Date of Entry:</label>
+                            <input type="date"
+                                   id="entryDate"
+                                   name="EntryDate"
+                                   class="standardControl form-control"
+                                   ng-model="so1Object.EntryDate"
+                                   placeholder="Entry Date.."
+                                   min="2015-01-01"
+                                   max="2016-12-31"
+                                   required
+                                   >
+                            <!--                    <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.required">Date of Entry is required</span>
+                                                <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.date">Not a valid date!</span>-->
+
+                        </div>             
+                    </div>
                 </div>
 
-                <div class="col-xs-5">
+                <div class="row">
                     <div class="form-group">
-                        <label>Credit Account:</label>
-                        <select class="standardControl form-control"
-                                name="creditLedgerType"
-                                ng-disabled="debitAgentStatus"
-                                ng-model="so1Object.creditLedgerType"
-                                ng-model-options="{ debounce: 250 }"
-                                ng-options="creditLedgerType.id as creditLedgerType.name for creditLedgerType in creditLedgerTypes"
-                                required
-                                >
-                            <option value="">Choose a ledger type ...</option>
-                        </select>
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.creditLedgerType.$error.required">Credit Account is required</span>-->
-                        <label>Credit Agent:</label>
-                        <select class="standardControl form-control"
-                                name="creditAgent"
-                                ng-disabled="debitAgentStatus"
-                                ng-model="so1Object.creditAgent"
-                                ng-model-options="{ debounce: 250 }"
-                                ng-options="creditAgent.id as creditAgent.name for creditAgent in creditAgents"
-                                required
-                                >
-                            <option value="">Choose an agent ...</option>
-                        </select>
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.creditAgent.$error.required">Credit Agent is required</span>-->
-                    </div>             
+                        <input class="btn btn-link" 
+                               type="button" 
+                               ng-click="resetForm(PerformManualEntryForm)" 
+                               value="Reset" />
+                        <input class="btn btn-primary"
+                               type="submit"
+                               ng-click="sendForm(so1Object)"
+
+                               value="Save"
+                               />
+                    </div> 
                 </div>
-
-                <div class="col-xs-5">
-                    <div class="form-group">
-                        <label>Trans type:</label>
-                        <select class="standardControl form-control"
-                                name="txType"
-                                ng-model="so1Object.txType"
-                                ng-model-options="{ debounce: 250 }"
-                                ng-options="txType.id as txType.name for txType in txTypes"
-                                required
-                                >
-                            <option value="">Choose a transaction type ...</option>
-                        </select>
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.txType.$error.required">Transaction type is required</span>-->
-                        <label>Amount:</label>
-                        <input 
-                            type="text" 
-                            name="amount" 
-                            class="standardControl form-control"
-                            ng-model="so1Object.amount" 
-                            required
-                            placeholder="Amount.."
-                            valid-float-number = "valid-float-number"
-                            >
-                            
-                        <!--                    <span class="text-error" ng-show="PerformManualEntryForm.amount.$error.required">Amount is required</span>
-                                            <span class="text-error" ng-show="PerformManualEntryForm.amount.$invalid && PerformManualEntryForm.amount.$dirty
-                                                  ">Invalid Data</span>-->
-                    </div>             
-                </div>
-
-                <div class="col-xs-5">
-                    <div class="form-group">
-                        <label>Comment:</label>
-                        <input
-                            type="text"
-                            name="comment"
-                            class="standardControl form-control"
-                            ng-model="so1Object.comment"
-                            ng-model-options="{ debounce: 250 }"
-                            ng-maxlength=20
-                            placeholder="Comment.."
-                            required
-                            >
-                        <!--                        <span class="error" ng-show="PerformManualEntryForm.comment.$error.required">Comment is required</span>-->
-                    </div>             
-                </div>
-
-                <div class="col-xs-5">
-                    <div class="form-group">
-                        <label>Related MTCN:</label>
-                        <input
-                            type="text"
-                            name="relatedMTCN"
-                            class="standardControl form-control"
-                            ng-model="so1Object.relatedMTCN"
-                            ng-model-options="{ debounce: 250 }"
-                            placeholder="Related MTCN.."
-                            required
-                            >
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.relatedMTCN.$error.required">Related MTCN is required</span>-->
-
-
-
-                    </div>             
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-5">
-                    <div class="form-group">
-                        <label>MTCN Date:</label>
-                        <input type="date"
-                               id="MTCNDate"
-                               name="MTCNDate"
-                               class="standardControl form-control"
-                               ng-model="so1Object.MTCNDate"
-                               placeholder="MTCN Date.."
-                               min="2015-01-01"
-                               max="2016-12-31"
-                               required
-                               >
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.required">MTCN Date is required</span>
-                                            <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.date">Not a valid date!</span>-->
-                        <label>Date of Entry:</label>
-                        <input type="date"
-                               id="entryDate"
-                               name="EntryDate"
-                               class="standardControl form-control"
-                               ng-model="so1Object.EntryDate"
-                               placeholder="Entry Date.."
-                               min="2015-01-01"
-                               max="2016-12-31"
-                               required
-                               >
-                        <!--                    <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.required">Date of Entry is required</span>
-                                            <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.date">Not a valid date!</span>-->
-
-                    </div>             
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group">
-                    <input class="btn btn-link" 
-                           type="button" 
-                           ng-click="resetForm(PerformManualEntryForm)" 
-                           value="Reset" />
-                    <input class="btn btn-primary"
-                           type="submit"
-                           ng-click="sendForm(so1Object)"
-                           
-                           value="Save"
-                           />
-                </div> 
-            </div>
-        </form>
+            </form>
+        </div>
+    </div>
+    <div ng-if="loading">
+        <img ng-src="images/loading.gif" width="150"/>
     </div>
 </div>
-<!-- ng-disabled="PerformManualEntryForm.$invalid" -->
 
