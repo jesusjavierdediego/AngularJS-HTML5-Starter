@@ -84,12 +84,11 @@ a.navbar-brand img {
 
 .horizontal-hide-animation.ng-hide-add,
 .horizontal-hide-animation.ng-hide-remove {
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s 1s;
-  -ms-transition: all 0.5s 1s;
-  -o-transition: all 0.5s 1s;
-  transition: all 0.5s ease-in-out;
-
+  -webkit-transition: all .25s ease-out;
+  -moz-transition: all .25s ease-out;
+  -ms-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
   width:20%;
 }
 .horizontal-hide-animation.ng-hide {
