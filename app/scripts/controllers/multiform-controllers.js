@@ -90,9 +90,9 @@ angular.module('App.Controllers')
             };*/
 
             $scope.sendForm = function(so1Object) {
-                if($scope.so1Object.amount.slice(-1) == "."){
-                    $scope.so1Object.amount = $scope.so1Object.amount.slice(0,-1);
-                }
+//                if($scope.so1Object.amount.slice(-1) == "."){
+//                    $scope.so1Object.amount = $scope.so1Object.amount.slice(0,-1);
+//                }
                 $scope.PerformManualEntryForm.submitted = true;
                 $log.debug("Object to send: " + angular.toJson(so1Object, true));
             };

@@ -86,12 +86,9 @@
                             name="amount" 
                             class="standardControl form-control"
                             ng-model="so1Object.amount" 
-                            ng-model-options="{ debounce: 250 }" 
                             required
                             placeholder="Amount.."
-                            valid-float-number
-                            locale="en"
-                            decimals="2"
+                            valid-float-number = "valid-float-number"
                             >
                             
                         <!--                    <span class="text-error" ng-show="PerformManualEntryForm.amount.$error.required">Amount is required</span>
