@@ -1,2 +1,2 @@
-browser.ignoreSynchronization = true;
+browser.ignoreSynchronization = false;
 browser.get('');

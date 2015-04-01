@@ -100,7 +100,8 @@ module.exports = function (grunt) {
 
     try {
         yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
-    } catch (e) {}
+    } catch (e) {
+    }
 
     grunt.initConfig({
         yeoman: yeomanConfig,
@@ -130,19 +131,19 @@ module.exports = function (grunt) {
             options: ['last 2 version'],
             tmp: {
                 files: [{
-                    expand: true,
-                    cwd: '.tmp/styles/',
-                    src: '**/*.css',
-                    dest: '.tmp/styles/'
-                }]
+                        expand: true,
+                        cwd: '.tmp/styles/',
+                        src: '**/*.css',
+                        dest: '.tmp/styles/'
+                    }]
             },
             styles: {
                 files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/styles/',
-                    src: '**/*.css',
-                    dest: '.tmp/styles/'
-                }]
+                        expand: true,
+                        cwd: '<%= yeoman.app %>/styles/',
+                        src: '**/*.css',
+                        dest: '.tmp/styles/'
+                    }]
             }
         },
         connect: {
@@ -215,13 +216,13 @@ module.exports = function (grunt) {
         clean: {
             dist: {
                 files: [{
-                    dot: true,
-                    src: [
-                        '.tmp',
-                        '<%= yeoman.dist %>/*',
-                        '!<%= yeoman.dist %>/.git*'
-                    ]
-                }]
+                        dot: true,
+                        src: [
+                            '.tmp',
+                            '<%= yeoman.dist %>/*',
+                            '!<%= yeoman.dist %>/.git*'
+                        ]
+                    }]
             },
             server: '.tmp',
             coverage: 'test/coverage',
@@ -285,14 +286,14 @@ module.exports = function (grunt) {
         imagemin: {
             dist: {
                 files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.app %>',
-                    src: [
-                        'styles/images/*.{jpg,jpeg,svg,gif}',
-                        'images/*.{jpg,jpeg,svg,gif}'
-                    ],
-                    dest: '<%= yeoman.dist %>'
-                }]
+                        expand: true,
+                        cwd: '<%= yeoman.app %>',
+                        src: [
+                            'styles/images/*.{jpg,jpeg,svg,gif}',
+                            'images/*.{jpg,jpeg,svg,gif}'
+                        ],
+                        dest: '<%= yeoman.dist %>'
+                    }]
             }
         },
         tinypng: {
@@ -328,64 +329,64 @@ module.exports = function (grunt) {
                     keepClosingSlash: true
                 },
                 files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.dist %>',
-                    src: [
-                        '*.html',
-                        'views/**/*.html',
-                        'template/**/*.html'
-                    ],
-                    dest: '<%= yeoman.dist %>'
-                }]
+                        expand: true,
+                        cwd: '<%= yeoman.dist %>',
+                        src: [
+                            '*.html',
+                            'views/**/*.html',
+                            'template/**/*.html'
+                        ],
+                        dest: '<%= yeoman.dist %>'
+                    }]
             }
         },
         // Put files not handled in other tasks here
         copy: {
             dev_dist: {
                 files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: [
-                        '**'
-                    ]
-  }]
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.app %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            '**'
+                        ]
+                    }]
             },
             dist: {
                 files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        'api/**',
-                        'images/{,*/}*.{gif,webp}',
-                        'resources/**',
-                        'styles/fonts/**',
-                        'styles/images/**',
-                        '*.html',
-                        'views/**/*.html',
-                        'template/**/*.html'
-                    ]
-                }, {
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/bower_components/angular-i18n',
-                    dest: '<%= yeoman.dist %>/resources/i18n/angular',
-                    src: [
-                        '*en-us.js',
-                        '*es-es.js',
-                        '*ja-jp.js',
-                        '*ar-eg.js'
-                    ]
-                }, {
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/bower_components/bootstrap-sass-official/vendor/assets/fonts',
-                    dest: '<%= yeoman.dist %>/styles',
-                    src: '**'
-                }]
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.app %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            '*.{ico,png,txt}',
+                            '.htaccess',
+                            'api/**',
+                            'images/{,*/}*.{gif,webp}',
+                            'resources/**',
+                            'styles/fonts/**',
+                            'styles/images/**',
+                            '*.html',
+                            'views/**/*.html',
+                            'template/**/*.html'
+                        ]
+                    }, {
+                        expand: true,
+                        cwd: '<%= yeoman.app %>/bower_components/angular-i18n',
+                        dest: '<%= yeoman.dist %>/resources/i18n/angular',
+                        src: [
+                            '*en-us.js',
+                            '*es-es.js',
+                            '*ja-jp.js',
+                            '*ar-eg.js'
+                        ]
+                    }, {
+                        expand: true,
+                        cwd: '<%= yeoman.app %>/bower_components/bootstrap-sass-official/vendor/assets/fonts',
+                        dest: '<%= yeoman.dist %>/styles',
+                        src: '**'
+                    }]
             },
             i18n: {
                 expand: true,
@@ -440,11 +441,11 @@ module.exports = function (grunt) {
         ngAnnotate: {
             dist: {
                 files: [{
-                    expand: true,
-                    cwd: '.tmp/concat/scripts',
-                    src: '*.js',
-                    dest: '.tmp/concat/scripts'
-                }]
+                        expand: true,
+                        cwd: '.tmp/concat/scripts',
+                        src: '*.js',
+                        dest: '.tmp/concat/scripts'
+                    }]
             }
         },
         protractor_webdriver: {

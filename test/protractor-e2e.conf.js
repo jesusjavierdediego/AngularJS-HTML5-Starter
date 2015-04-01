@@ -6,6 +6,11 @@ exports.config = {
     ],
     allScriptsTimeout: 60000,
     baseUrl: 'http://localhost:9090',
+//    multiCapabilities: [{
+//        'browserName': 'firefox'
+//      }, {
+//        'browserName': 'chrome'
+//      }],
     capabilities: {
         //'browserName': 'phantomjs',
         'browserName': 'chrome',

@@ -10,12 +10,11 @@ describe('PerformManualEntryForm Test Suite',function(){
     beforeEach(function() {
         var ptor = protractor.getInstance();
         ptor.waitForAngular();
-        browser.ignoreSynchronization = false;
         browser.get('#/multiform/ao1');
         
     });
     
-    var mTCNDate = element(By.id('MTCNDate'));
+    //var mTCNDate = element(By.id('MTCNDate'));
     var amount = element(By.model('so1Object.amount'));
     
     
@@ -25,15 +24,12 @@ describe('PerformManualEntryForm Test Suite',function(){
 //            "angular.element(ipt).scope().$apply(function(s) { s.PerformManualEntryForm[ipt.name].$setViewValue('" + val + "'); });";
 //        browser.executeScript(scr);
 //    }
+   
     
-//    it('should have MTCNDate in PerformManualEntry form', function() {
-//        expect(this.mTCNDate.getText()).toContain('');
-//    });
-//    it('should have amount field in PerformManualEntry form', function() {
-//        expect(this.amount.getText()).toContain('');
-//    });
     it('should the amount field accept no decimals number', function() {
-        amount.sendKeys('2');
+        amount.sendKeys('2.');
+        var blur = "document.getElementById('amount').blur()";
+        browser.executeScript(blur);
         expect(amount.getAttribute('value')).toEqual('2');
     });
     
