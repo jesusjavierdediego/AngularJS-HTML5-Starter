@@ -430,14 +430,6 @@ module.exports = function (grunt) {
             },
             unit_auto: {
                 configFile: '<%= yeoman.test %>/karma-unit.conf.js'
-            },
-            midway: {
-                configFile: '<%= yeoman.test %>/karma-midway.conf.js',
-                autoWatch: false,
-                singleRun: true
-            },
-            midway_auto: {
-                configFile: '<%= yeoman.test %>/karma-midway.conf.js'
             }
         },
         cdnify: {
@@ -525,7 +517,6 @@ module.exports = function (grunt) {
         'clean:coverage',
         'karma:unit',
         'testserver:pre',
-        'karma:midway',
         'protractor_webdriver',
         'test:e2e:run'
     ]);
@@ -535,11 +526,6 @@ module.exports = function (grunt) {
         'karma:unit_auto'
     ]);
 
-    grunt.registerTask('test:midway', [
-        'testserver:pre',
-        'clean:coverage',
-        'karma:midway_auto'
-    ]);
 
     grunt.registerTask('test:e2e', [
         'protractor_webdriver',

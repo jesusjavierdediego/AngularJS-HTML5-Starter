@@ -6,7 +6,7 @@ describe("E2E: Testing Routes", function () {
         expect(browser.getTitle()).toEqual('AngularJS HTML5 Starter');
     });
 
-    it('should jump to the /home path when / is accessed', function () {
+    it('should jump to the /multiform path when / is accessed', function () {
         expect(browser.getLocationAbsUrl()).toBe(browser.baseUrl + "/#/multiform");
     });
 });
