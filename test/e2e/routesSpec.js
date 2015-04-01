@@ -7,6 +7,6 @@ describe("E2E: Testing Routes", function () {
     });
 
     it('should jump to the /multiform path when / is accessed', function () {
-        expect(browser.getLocationAbsUrl()).toBe(browser.baseUrl + "/#/multiform");
+        expect(browser.getLocationAbsUrl()).toBe(browser.baseUrl + "/#/multiform/ao1");
     });
 });
