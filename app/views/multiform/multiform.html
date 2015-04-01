@@ -2,9 +2,12 @@
     <!--    <p class="lead">Multiform Demo</p>-->
     
     <div class="row">
-
+        
         <div class="col-md-3 col-sm-4 horizontal-hide-animation" ng-hide="toggle">
+            
             <div class="pa-sidebar well well-small" >
+                <p>WUAPS-UK</p>
+                
                 <accordion close-others="oneAtATime">
                     <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
                         <div ng-repeat="item in group.items">
@@ -15,15 +18,15 @@
                 <hr>
             </div>
         </div>
-        
-        <div class="scrollable" snap-content  snap-options="{tapToClose:true}">
+        <div>
             <input type="button" ng-click="toggleSideMenu()" value="{{toggleSideMenuButtonValue}}">
         </div>
-        
+        <div ng-show="toggle" class="col-md-1 col-sm-1 pa-sidebar well well-small">
+            <p class="rotate" ng-show="toggle">WUAPS-UK</p>
+        </div>
+            
         <!-- Our unnamed main ui-view for this template -->
         <div ui-view class="col-md-9 col-sm-8" autoscroll="false"></div>
-
-
 
     </div>
 

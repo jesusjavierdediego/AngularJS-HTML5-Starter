@@ -13,8 +13,6 @@ angular.module('App.Directives')
                 restrict: 'EA',
                 require: 'ngModel',
                 link: function (scope, element, attrs, ngModelCtrl) {
-                    var locale = attrs.locale;
-                    var decimals = attrs.decimals;
                     if (!ngModelCtrl) {
                         return;
                     }
@@ -27,35 +25,32 @@ angular.module('App.Directives')
                         //Handle onblur event
                         element.bind('blur', function () {
                             replaceNotvalidFinalChars(transformedViewValue, function (value) {
+                                ngModelCtrl.$setValidity('amount', true);
                                 ngModelCtrl.$setViewValue(value);
                                 ngModelCtrl.$render();
                             });
-                            ngModelCtrl.$setValidity('float', true);
+                            
                         });
 
                         //Parse entered value while focused
-                        if (
-                                FLOAT_REGEXP_1.test(transformedViewValue) ||
-                                FLOAT_REGEXP_2.test(transformedViewValue)
-                                ) {
-                            //console.log("valid");
+                        if (FLOAT_REGEXP_1.test(transformedViewValue) || FLOAT_REGEXP_2.test(transformedViewValue)){
                             ngModelCtrl.$setValidity('float', true);
                         } else {
-                            //console.log("not valid");
-                            ngModelCtrl.$setValidity('float', false);
                             transformedViewValue = transformedViewValue.slice(0, -1);
+                            ngModelCtrl.$setValidity('float', false);
                         }
 
                         if (transformedViewValue != viewValue) {
                             ngModelCtrl.$setViewValue(transformedViewValue);
                             ngModelCtrl.$render();
                         }
+                        
                         return transformedViewValue;
                     });
                 }
             };
         });
-        
+
 
 function replaceNotvalidFinalChars(transformedViewValue, callback) {
     if (transformedViewValue.indexOf(',') !== -1) {

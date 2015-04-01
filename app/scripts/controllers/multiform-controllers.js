@@ -67,8 +67,6 @@ angular.module('App.Controllers')
                 });
 
                 $q.all(promises).then(function () {
-                    //$log.debug("chain promises number:: " + promises.length);
-                    //$log.debug("chain promises resolved");
                     $scope.loading = false;
                     $scope.resolved = true;
                 });
