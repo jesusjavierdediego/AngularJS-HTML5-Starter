@@ -1,16 +1,18 @@
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     specs: [
-        'test/e2e/init.js', 
-        'test/e2e/**/*.js'
+        'test/e2e/init.js',
+        'test/e2e/controllers/sideMenuCtrlSpec.js',
+        'test/e2e/controllers/performManualEntryFormDateSpec.js'
+        //'test/e2e/**/*.js'
     ],
     allScriptsTimeout: 60000,
     baseUrl: 'http://localhost:9090',
-//    multiCapabilities: [{
-//        'browserName': 'firefox'
-//      }, {
-//        'browserName': 'chrome'
-//      }],
+/*    multiCapabilities: [{
+       'browserName': 'firefox'
+     }, {
+       'browserName': 'chrome'
+     }],*/
     capabilities: {
         //'browserName': 'phantomjs',
         'browserName': 'chrome',

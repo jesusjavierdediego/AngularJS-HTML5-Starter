@@ -12,7 +12,7 @@ describe('Unit: Testing Controllers', function () {
         scope = $rootScope.$new();
         controller = $controller;
     }));
-
+    
     it('should have a properly working PerformManualEntryCtrl', function () {
         controller('PerformManualEntryCtrl', {
             '$scope': scope,

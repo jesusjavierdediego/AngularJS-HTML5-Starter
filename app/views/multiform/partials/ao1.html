@@ -28,7 +28,7 @@
                                     name="debitAgent"
                                     ng-disabled="debitAgentStatus"
                                     ng-model="so1Object.debitAgent"
-                                    ng-model-options="{ debounce: 250 }"
+                                    ng-model-options="{ debounce: 50 }"
                                     ng-options="debitAgent.id as debitAgent.name for debitAgent in debitAgents"
                                     required
                                     >
@@ -46,7 +46,7 @@
                                     name="creditLedgerType"
                                     ng-disabled="debitAgentStatus"
                                     ng-model="so1Object.creditLedgerType"
-                                    ng-model-options="{ debounce: 250 }"
+                                    ng-model-options="{ debounce: 50 }"
                                     ng-options="creditLedgerType.id as creditLedgerType.name for creditLedgerType in creditLedgerTypes"
                                     required
                                     >
@@ -58,7 +58,7 @@
                                     name="creditAgent"
                                     ng-disabled="debitAgentStatus"
                                     ng-model="so1Object.creditAgent"
-                                    ng-model-options="{ debounce: 250 }"
+                                    ng-model-options="{ debounce: 50 }"
                                     ng-options="creditAgent.id as creditAgent.name for creditAgent in creditAgents"
                                     required
                                     >
@@ -74,7 +74,6 @@
                             <select class="standardControl form-control"
                                     name="txType"
                                     ng-model="so1Object.txType"
-                                    ng-model-options="{ debounce: 250 }"
                                     ng-options="txType.id as txType.name for txType in txTypes"
                                     required
                                     >
@@ -107,13 +106,12 @@
                                 name="comment"
                                 class="standardControl form-control"
                                 ng-model="so1Object.comment"
-                                ng-model-options="{ debounce: 250 }"
                                 ng-maxlength=20
                                 placeholder="Comment.."
                                 required
                                 >
-                            <!--                        <span class="error" ng-show="PerformManualEntryForm.comment.$error.required">Comment is required</span>-->
-                        </div>             
+<!--                                                     <span class="error" ng-show="PerformManualEntryForm.comment.$error.required">Comment is required</span>
+ -->                        </div>             
                     </div>
 
                     <div class="col-xs-5">
@@ -124,7 +122,6 @@
                                 name="relatedMTCN"
                                 class="standardControl form-control"
                                 ng-model="so1Object.relatedMTCN"
-                                ng-model-options="{ debounce: 250 }"
                                 placeholder="Related MTCN.."
                                 required
                                 >
@@ -149,8 +146,11 @@
                                    max="2016-12-31"
                                    required
                                    >
-                            <!--                    <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.required">MTCN Date is required</span>
-                                                <span class="error" ng-show="PerformManualEntryForm.MTCNDate.$error.date">Not a valid date!</span>-->
+                            
+<span class="errorMTCNDateRequired" id="MTCNDateRequiredMsg" ng-show="PerformManualEntryForm.MTCNDate.$error.required">Required</span>
+<span class="validMTCNDate" id="MTCNDateValidMsg" ng-show="PerformManualEntryForm.MTCNDate.$valid">Valid</span>
+<span class="errorMTCNDateInvalid" id="MTCNDateNotValidMsg" ng-hide="PerformManualEntryForm.MTCNDate.$valid">Invalid</span>
+                            <br/>
                             <label>Date of Entry:</label>
                             <input type="date"
                                    id="entryDate"
@@ -162,8 +162,9 @@
                                    max="2016-12-31"
                                    required
                                    >
-                            <!--                    <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.required">Date of Entry is required</span>
-                                                <span class="error" ng-show="PerformManualEntryForm.EntryDate.$error.date">Not a valid date!</span>-->
+<span class="errorEntryDateRequired" id="EntryDateRequiredMsg" ng-show="PerformManualEntryForm.EntryDate.$error.required">Required</span>
+<span class="validEntryDate" id="EntryDateValidMsg" ng-show="PerformManualEntryForm.EntryDate.$valid">Valid</span>
+<span class="errorEntryDateInvalid" id="EntryDateNotValidMsg" ng-hide="PerformManualEntryForm.EntryDate.$valid">Invalid</span>
 
                         </div>             
                     </div>
