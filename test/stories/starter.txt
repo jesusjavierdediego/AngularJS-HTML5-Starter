@@ -1,0 +1,65 @@
+	Given
+    The app is deployed and rendered in the browser
+    When 
+    I navigate to /multiform
+    Then
+    The absolute working URL route is /#/multiform
+    The site has a title with the text 'AngularJS HTML5 Starter'
+
+	Given
+    The app is deployed and rendered in the browser
+    When 
+    I click on the Accounting menu item
+    Then
+    The sub-items under Accounting are displayed
+	
+	Given
+    The app is deployed and rendered in the browser
+    When 
+    I click on the Portfolio menu item
+    Then
+    The sub-items under Portfolio are displayed
+	
+	
+	Given
+    The app is deployed and rendered in the browser
+    When 
+    I navigate to /multiform/ao1
+    Then
+    The absolute woriking URL route is /#/multiform/ao1
+	
+	Given
+    The Debit Account is enabled but not yet used
+    When 
+    The user sees the form
+    Then
+    The Agent/Account select controls are disabled
+    
+	Given
+    The Debit Account is enabled
+    When 
+    The user selects an option
+    Then
+    The Agent/Account select controls are enabled
+	
+	Given
+    The amount control is enabled
+    When 
+    I enter not valid formats
+    Then
+    The control validates it and modify to a valid format
+	
+	Given
+    The date control are enabled
+    When 
+    I enter valid date formats (dd/mm/yyyy)
+    Then
+    The controls do accept the valid date
+	
+	Given
+    The amount control is enabled
+    When 
+    I enter not valid formats
+    Then
+    The control displays an error
+	
