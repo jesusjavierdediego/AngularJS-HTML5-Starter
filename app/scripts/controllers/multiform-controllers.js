@@ -118,7 +118,6 @@ angular.module('App.Controllers')
                  };*/
 
                 $scope.sendForm = function (so1Object) {
-                    $scope.PerformManualEntryForm.submitted = true;
                     $log.debug("Object to send: " + angular.toJson(so1Object, true));
                 };
 
