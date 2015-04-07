@@ -122,15 +122,15 @@ describe('PerformManualEntryForm Test Suite',function(){
         var focus = "document.getElementById('MTCNDate').focus()";
         MTCNDate.sendKeys('01/01/2016');
 
-        expect($('.validMTCNDate').isDisplayed()).toBeTruthy();
+        expect(element(By.css('.validMTCNDate')).isDisplayed()).toBeTruthy();
     });
 
     it('should the EntryDate control to accept dates with the valid format', function() {
         //_this.setDateInput('MTCNDate','2015/01/01');
-        var focus = "document.getElementById('EntryDate').focus()";
+        var focus = "document.getElementById('entryDate').focus()";
         EntryDate.sendKeys('01/01/2016');
 
-        expect($('.validEntryDate').isDisplayed()).toBeTruthy();
+        expect(element(By.css('.validEntryDate')).isDisplayed()).toBeTruthy();
     });
 
     /*
@@ -141,19 +141,19 @@ describe('PerformManualEntryForm Test Suite',function(){
     Then
     The control displays an error
     */
-    it('should the MTCNDate control to not accept dates with invalid formats', function() {
+    it('should the MTCNDate control to not accept dates with invalid format', function() {
         //_this.setDateInput('MTCNDate','2015/01/01');
         var focus = "document.getElementById('MTCNDate').focus()";
-        MTCNDate.sendKeys('2015/01/01');
+        MTCNDate.sendKeys('01/2015/01');
 
-        expect($('.errorMTCNDateInvalid').isDisplayed()).toBeTruthy();
+        expect(element(By.css('.errorMTCNDateInvalid')).isDisplayed()).toBeTruthy();
     });
 
-    it('should the EntryDate control to not accept dates with invalid formats', function() {
+    it('should the EntryDate control to not accept dates with invalid format', function() {
         //_this.setDateInput('MTCNDate','2015/01/01');
         var focus = "document.getElementById('EntryDate').focus()";
-        EntryDate.sendKeys('2015/01/01');
+        EntryDate.sendKeys('01/2015/01');
 
-        expect($('.errorEntryDateInvalid').isDisplayed()).toBeTruthy();
+        expect(element(By.css('.errorEntryDateInvalid')).isDisplayed()).toBeTruthy();
     });
 });
