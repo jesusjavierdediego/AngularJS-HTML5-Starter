@@ -8,18 +8,18 @@ exports.config = {
     ],
     allScriptsTimeout: 60000,
     baseUrl: 'http://localhost:9090',
-    /*multiCapabilities: [{
-       'browserName': 'firefox'
-     }, {
-       'browserName': 'chrome'
-     }],*/
+//    multiCapabilities: [{
+//       'browserName': 'chrome'
+//     }, {
+//       'browserName': 'firefox'
+//     }],
     capabilities: {
         
         //'browserName': 'firefox',
-        'browserName': 'chrome',
-        //'browserName': 'phantomjs',
-        //'phantomjs.binary.path': 'node_modules/.bin/phantomjs' + (process.platform === 'win32' ? '.cmd' : ''),
-        //'phantomjs.cli.args': ['--ignore-ssl-errors=true', '--web-security=false']
+        //'browserName': 'chrome',
+        'browserName': 'phantomjs',
+        'phantomjs.binary.path': 'node_modules/.bin/phantomjs' + (process.platform === 'win32' ? '.cmd' : ''),
+        'phantomjs.cli.args': ['--ignore-ssl-errors=true', '--web-security=false']
     },
     onPrepare: function () {
         require('jasmine-reporters');
