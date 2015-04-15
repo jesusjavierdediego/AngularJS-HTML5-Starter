@@ -95,9 +95,18 @@ module.exports = function (grunt) {
         doc: 'doc',
         test: 'test',
         coverage: 'test/coverage',
-        instrumented: 'test/coverage/instrumented'
+        instrumented: 'test/coverage/instrumented',
+        name: 'AngularJS HTML5 Starter',
+        sonarKey: 'AngularJSHTML5Starter',
+        version: '1.0.0',
+        sonarURL: 'http://localhost:9000',
+        sonarDatabaseURL: 'jdbc:h2:tcp://localhost:9092/sonar',
+        sonarUser: 'sonar',
+        sonarPassword: 'sonar',
+        sonarLanguage: 'js',
+        sonarSources: 'app/scripts',
+        sonarSourceEncoding: 'UTF-8',
     };
-
     try {
         yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
     } catch (e) {
@@ -485,12 +494,39 @@ module.exports = function (grunt) {
             licence: {
                 output: 'licenses.json'
             }
-        }
+        },
+        sonarRunner: {
+			analysis: {
+				options: {
+					debug: true,
+					separator: '\n',
+					sonar: {
+						host: {
+							url: '<%= yeoman.sonarURL %>'
+						},
+						jdbc: {
+
+							url: '<%= yeoman.sonarDatabaseURL %>',
+							username: '<%= yeoman.sonarUser %>',
+							password: '<%= yeoman.sonarPassword %>'
+						},
+
+						projectKey: 'sonar:<%= yeoman.sonarKey %>:<%= yeoman.version %>',
+						projectName: '<%= yeoman.name %>',
+						projectVersion: '<%= yeoman.version %>',
+						sources: ['<%= yeoman.sonarSources %>'].join(','),
+						language: '<%= yeoman.sonarLanguage %>',
+						sourceEncoding: '<%= yeoman.sonarSourceEncoding %>'
+					}
+				}
+			}
+		}
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-license');
+    grunt.loadNpmTasks('grunt-sonar-runner');
 
     grunt.registerTask('server', [
         'clean:server',

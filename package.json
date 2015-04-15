@@ -45,7 +45,8 @@
     "ng-midway-tester": "2.0.5",
     "phantomjs": "1.9.9",
     "protractor": "0.24.2",
-    "time-grunt": "0.1.0"
+    "time-grunt": "0.1.0",
+    "grunt-sonar-runner": "~2.4.2"
   },
   "engines": {
     "node": ">=0.8.0"
